@@ -1,66 +1,86 @@
 import Link from "next/link";
 
-const REVIEWS = [
-  {
-    name: "Local client",
-    text: "Hanna is meticulous and really listens. Color came out natural and exactly what I wanted.",
-  },
-  {
-    name: "Repeat customer",
-    text: "Best haircut I’ve had in years — shape and movement are perfect and it grows out nicely.",
-  },
-  {
-    name: "Highlights client",
-    text: "My highlights look dimensional and blended. Super professional and calm experience.",
-  },
-  {
-    name: "New client",
-    text: "Great consultation and recommendations. Loved the finish and shine.",
-  },
-  {
-    name: "Color client",
-    text: "Root coverage was seamless and the tone is beautiful. Highly recommend.",
-  },
-  {
-    name: "West Newton",
-    text: "Clean studio, great vibe, and consistent results every time.",
-  },
-];
+export const metadata = {
+  title: "Reviews | Hair By Hanna — West Newton, MA",
+  description:
+    "Client reviews for Hair By Hanna in West Newton, MA. Read feedback and write a review on Google.",
+};
 
 export default function ReviewsPage() {
+  // Free Google Maps embed (no API). Uses a search query for the business.
+  const embedSrc =
+    "https://www.google.com/maps?q=Hair%20By%20Hanna%201299%20Washington%20St%20West%20Newton%20MA&output=embed";
+
+  const googleReviewLink =
+    "https://www.google.com/maps?q=Hair%20By%20Hanna%201299%20Washington%20St%20West%20Newton%20MA";
+
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
-      <p className="text-xs uppercase tracking-[0.25em] gold">Reviews</p>
-      <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-3xl md:text-5xl font-semibold">Client love</h1>
-          <p className="mt-3 text-white/70 max-w-2xl">
-            Consistent results, calm experience, and looks that grow out beautifully.
+    <main>
+      <section className="container pt-16 pb-12">
+        <div className="max-w-3xl fade-in">
+          <p className="text-xs uppercase tracking-[0.35em] gold">Reviews</p>
+
+          <h1 className="mt-4 text-4xl md:text-5xl font-semibold">
+            Google Reviews for Hair By Hanna
+          </h1>
+
+          <p className="mt-4 text-white/70 leading-relaxed">
+            Read reviews from real clients and, if you’ve visited, we’d love for you to
+            leave feedback on Google.
           </p>
-        </div>
-        <Link href="/contact" className="btn btn-gold">Book</Link>
-      </div>
 
-      <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {REVIEWS.map((r) => (
-          <div key={r.name + r.text} className="card p-6">
-            <p className="text-sm text-white/80">“{r.text}”</p>
-            <p className="mt-4 text-xs text-white/55">— {r.name}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={googleReviewLink}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-cream"
+            >
+              View on Google
+            </a>
+            <Link href="/contact" className="btn btn-ghost">
+              Book Appointment
+            </Link>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-10 card p-10">
-        <p className="text-xs uppercase tracking-[0.25em] gold">Book</p>
-        <h2 className="mt-3 text-2xl font-semibold">Want this result?</h2>
-        <p className="mt-3 text-white/70 max-w-2xl">
-          Request an appointment and we’ll confirm availability.
-        </p>
-        <div className="mt-7 flex flex-col sm:flex-row gap-3">
-          <Link href="/contact" className="btn btn-gold">Request Appointment</Link>
-          <a href="tel:+16179653012" className="btn btn-ghost">Call 617-965-3012</a>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="container pb-24">
+        <div className="card overflow-hidden">
+          <div className="aspect-[16/10] w-full">
+            <iframe
+              title="Hair By Hanna — Google Reviews"
+              src={embedSrc}
+              className="h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        <div className="mt-10 card p-10 text-center">
+          <p className="text-xs uppercase tracking-[0.35em] gold">Leave a review</p>
+          <h2 className="mt-3 text-3xl font-semibold">Loved your experience?</h2>
+          <p className="mt-3 text-white/70">
+            Reviews help new clients find a salon they can trust.
+          </p>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <a
+              href={googleReviewLink}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-cream px-6 py-3"
+            >
+              Write a Google Review
+            </a>
+            <Link href="/gallery" className="btn btn-ghost px-6 py-3">
+              View Gallery
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
