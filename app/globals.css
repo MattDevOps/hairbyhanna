@@ -1,63 +1,133 @@
 @import "tailwindcss";
 
+/* =========================
+   Cream Luxury Theme
+   ========================= */
+
 :root {
   --bg: #0b0b0c;
-  --gold: #c9a86a;
-  --text: rgba(255,255,255,0.92);
-  --muted: rgba(255,255,255,0.68);
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.085);
+  --border: rgba(255, 255, 255, 0.14);
+
+  /* cream / off-white */
+  --cream: #f4efe6;
+  --cream-2: #efe7da;
+
+  /* muted text on dark */
+  --text: rgba(244, 239, 230, 0.92);
+  --muted: rgba(244, 239, 230, 0.70);
+
+  /* accent */
+  --accent: #d8c3a5;   /* warm cream-gold */
+  --accent-2: #c9a86a; /* slightly stronger */
+  --shadow: 0 30px 90px rgba(0,0,0,0.55);
+
+  --radius-xl: 22px;
+  --radius-lg: 18px;
 }
 
 html, body { height: 100%; }
+
 body {
   background:
-    radial-gradient(1200px 600px at 20% -10%, rgba(201,168,106,0.18), transparent 55%),
-    radial-gradient(900px 450px at 90% 10%, rgba(255,255,255,0.08), transparent 60%),
+    radial-gradient(1200px 700px at 15% -10%, rgba(216,195,165,0.20), transparent 55%),
+    radial-gradient(1000px 520px at 90% 10%, rgba(244,239,230,0.09), transparent 55%),
+    radial-gradient(900px 480px at 60% 120%, rgba(201,168,106,0.10), transparent 55%),
     var(--bg);
   color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.gold { color: var(--gold); }
+/* Typography helpers */
+.gold { color: var(--accent); }
+.muted { color: var(--muted); }
+
+::selection {
+  background: rgba(216,195,165,0.25);
+}
+
+/* =========================
+   Components
+   ========================= */
 
 .card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+}
+
+.card-soft {
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-xl);
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   border-radius: 999px;
   padding: 12px 18px;
   font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(255,255,255,0.14);
+  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease, border-color 140ms ease;
+  user-select: none;
+  white-space: nowrap;
 }
+
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0px); }
 
-.btn-gold {
-  background: var(--gold);
-  color: #121214;
-  border-color: rgba(201,168,106,0.55);
+.btn-cream {
+  background: var(--cream);
+  color: #151516;
+  border-color: rgba(244,239,230,0.55);
 }
+
+.btn-cream:hover { background: var(--cream-2); }
+
 .btn-ghost {
   background: rgba(255,255,255,0.06);
-  color: rgba(255,255,255,0.92);
+  color: rgba(244,239,230,0.92);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
 }
 
 .input {
   width: 100%;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.25);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.22);
   padding: 12px 14px;
-  color: rgba(255,255,255,0.92);
+  color: rgba(244,239,230,0.92);
   outline: none;
 }
+
+.input::placeholder { color: rgba(244,239,230,0.55); }
+
 .input:focus {
-  border-color: rgba(201,168,106,0.55);
-  box-shadow: 0 0 0 4px rgba(201,168,106,0.12);
+  border-color: rgba(216,195,165,0.55);
+  box-shadow: 0 0 0 4px rgba(216,195,165,0.12);
 }
+
+/* Small polish */
+a { text-underline-offset: 4px; }
+hr { border-color: rgba(255,255,255,0.10); }
+
+/* Nice container rhythm (optional utility-like) */
+.section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+/* Smoother images */
+img { image-rendering: auto; }
