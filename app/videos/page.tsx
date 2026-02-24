@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import videos from "@/public/videos/videos.json";
-import gallery from "@/public/images/portfolio/gallery.json";
+import featured from "@/public/images/featured.manual.json";
 
 type VideoItem = {
   title: string;
@@ -51,7 +51,7 @@ function getYouTubeId(input: string) {
 
 export default function VideosPage() {
   const list = (videos as unknown as VideoItem[]) || [];
-  const previewImages = (gallery as unknown as ImgItem[]).slice(0, 6);
+  const previewImages = (featured as unknown as ImgItem[]).slice(0, 6);
 
   return (
     <main>
