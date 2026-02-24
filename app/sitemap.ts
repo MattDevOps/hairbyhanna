@@ -1,22 +1,19 @@
-import { site } from "@/lib/site";
-
 export default function sitemap() {
+  const base = "https://hairbyhanna.com";
   const routes = [
     "",
     "/services",
-    "/services/haircuts",
-    "/services/hair-color",
-    "/services/highlights",
-    "/services/brazilian-blowout",
-    "/services/treatments",
     "/gallery",
-    "/reviews",
     "/about",
-    "/contact"
+    "/contact",
+    "/reviews",
+    "/hair-color-west-newton-ma",
+    "/highlights-newton-ma",
+    "/haircuts-west-newton-ma"
   ];
 
   return routes.map((path) => ({
-    url: `${site.domain}${path}`,
+    url: `${base}${path}`,
     lastModified: new Date()
   }));
 }
