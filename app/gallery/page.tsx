@@ -1,5 +1,6 @@
 "use client";
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -12,6 +13,10 @@ type Item = {
   title?: string;
   description?: string;
 };
+
+// Client component can't export Metadata.
+// We'll use a small helper via <head> is not recommended in App Router.
+// So: we keep UI here and set metadata in app/gallery/layout.tsx below (next file).
 
 export default function GalleryPage() {
   const items = gallery as Item[];
@@ -72,13 +77,7 @@ export default function GalleryPage() {
           >
             <div className="relative w-full max-w-3xl overflow-hidden rounded-[22px] border border-white/10 bg-black">
               <div className="relative aspect-[4/5] w-full">
-                <Image
-                  src={active.src}
-                  alt={active.alt}
-                  fill
-                  className="object-contain"
-                  priority
-                />
+                <Image src={active.src} alt={active.alt} fill className="object-contain" priority />
               </div>
 
               <div className="flex items-center justify-between gap-4 border-t border-white/10 p-3">
@@ -89,11 +88,7 @@ export default function GalleryPage() {
                   <p className="text-xs text-white/70 truncate">{active.alt}</p>
                 </div>
 
-                <button
-                  className="btn btn-ghost px-4 py-2"
-                  type="button"
-                  onClick={() => setOpen(false)}
-                >
+                <button className="btn btn-ghost px-4 py-2" type="button" onClick={() => setOpen(false)}>
                   Close
                 </button>
               </div>
