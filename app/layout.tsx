@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 const heading = Playfair_Display({
   subsets: ["latin"],
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         {children}
         <Footer />
+        <StickyCTA />
       </body>
     </html>
   );

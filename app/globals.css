@@ -1,133 +1,314 @@
 @import "tailwindcss";
 
-/* =========================
-   Cream Luxury Theme
-   ========================= */
+/* =========================================
+   GLOBAL RESET (fix spacing issues)
+========================================= */
 
-:root {
-  --bg: #0b0b0c;
-  --surface: rgba(255, 255, 255, 0.06);
-  --surface-2: rgba(255, 255, 255, 0.085);
-  --border: rgba(255, 255, 255, 0.14);
-
-  /* cream / off-white */
-  --cream: #f4efe6;
-  --cream-2: #efe7da;
-
-  /* muted text on dark */
-  --text: rgba(244, 239, 230, 0.92);
-  --muted: rgba(244, 239, 230, 0.70);
-
-  /* accent */
-  --accent: #d8c3a5;   /* warm cream-gold */
-  --accent-2: #c9a86a; /* slightly stronger */
-  --shadow: 0 30px 90px rgba(0,0,0,0.55);
-
-  --radius-xl: 22px;
-  --radius-lg: 18px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 
 body {
+  margin: 0;
+  padding: 0;
+
   background:
-    radial-gradient(1200px 700px at 15% -10%, rgba(216,195,165,0.20), transparent 55%),
+    radial-gradient(1200px 700px at 15% -10%, rgba(216,195,165,0.22), transparent 55%),
     radial-gradient(1000px 520px at 90% 10%, rgba(244,239,230,0.09), transparent 55%),
     radial-gradient(900px 480px at 60% 120%, rgba(201,168,106,0.10), transparent 55%),
-    var(--bg);
-  color: var(--text);
+    #0b0b0c;
+
+  color: rgba(244,239,230,0.92);
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Typography helpers */
-.gold { color: var(--accent); }
-.muted { color: var(--muted); }
+/* =========================================
+   THEME VARIABLES (Cream luxury palette)
+========================================= */
+
+:root {
+
+  --bg: #0b0b0c;
+
+  --surface: rgba(255,255,255,0.06);
+  --surface-2: rgba(255,255,255,0.09);
+
+  --border: rgba(255,255,255,0.14);
+
+  /* cream palette */
+  --cream: #f4efe6;
+  --cream-2: #efe7da;
+
+  /* text */
+  --text: rgba(244,239,230,0.92);
+  --muted: rgba(244,239,230,0.70);
+  --muted-2: rgba(244,239,230,0.55);
+
+  /* accent */
+  --accent: #d8c3a5;
+  --accent-strong: #c9a86a;
+
+  /* shadows */
+  --shadow: 0 30px 90px rgba(0,0,0,0.55);
+  --shadow-soft: 0 18px 55px rgba(0,0,0,0.40);
+
+  /* radii */
+  --radius-xl: 22px;
+  --radius-lg: 18px;
+}
+
+/* =========================================
+   TYPOGRAPHY HELPERS
+========================================= */
+
+.gold {
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.muted2 {
+  color: var(--muted-2);
+}
 
 ::selection {
   background: rgba(216,195,165,0.25);
 }
 
-/* =========================
-   Components
-   ========================= */
+/* =========================================
+   LAYOUT CONTAINERS
+========================================= */
 
-.card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow);
+.container {
+
+  max-width: 1152px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
-.card-soft {
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.10);
-  border-radius: var(--radius-xl);
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 999px;
-  padding: 12px 18px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  border: 1px solid rgba(255,255,255,0.14);
-  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease, border-color 140ms ease;
-  user-select: none;
-  white-space: nowrap;
-}
-
-.btn:hover { transform: translateY(-1px); }
-.btn:active { transform: translateY(0px); }
-
-.btn-cream {
-  background: var(--cream);
-  color: #151516;
-  border-color: rgba(244,239,230,0.55);
-}
-
-.btn-cream:hover { background: var(--cream-2); }
-
-.btn-ghost {
-  background: rgba(255,255,255,0.06);
-  color: rgba(244,239,230,0.92);
-  border-color: rgba(255,255,255,0.12);
-}
-
-.btn-ghost:hover {
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.18);
-}
-
-.input {
-  width: 100%;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(0,0,0,0.22);
-  padding: 12px 14px;
-  color: rgba(244,239,230,0.92);
-  outline: none;
-}
-
-.input::placeholder { color: rgba(244,239,230,0.55); }
-
-.input:focus {
-  border-color: rgba(216,195,165,0.55);
-  box-shadow: 0 0 0 4px rgba(216,195,165,0.12);
-}
-
-/* Small polish */
-a { text-underline-offset: 4px; }
-hr { border-color: rgba(255,255,255,0.10); }
-
-/* Nice container rhythm (optional utility-like) */
 .section {
   padding-top: 64px;
   padding-bottom: 64px;
 }
 
-/* Smoother images */
-img { image-rendering: auto; }
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.05)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow);
+
+  transition: transform 160ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card-soft {
+
+  background: rgba(255,255,255,0.045);
+
+  border: 1px solid rgba(255,255,255,0.10);
+
+  border-radius: var(--radius-xl);
+
+  box-shadow: var(--shadow-soft);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  border-radius: 999px;
+
+  padding: 12px 18px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.01em;
+
+  border: 1px solid rgba(255,255,255,0.14);
+
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease;
+
+  user-select: none;
+
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+/* Cream primary button */
+
+.btn-cream {
+
+  background: var(--cream);
+
+  color: #151516;
+
+  border-color: rgba(244,239,230,0.55);
+}
+
+.btn-cream:hover {
+
+  background: var(--cream-2);
+}
+
+/* Ghost button */
+
+.btn-ghost {
+
+  background: rgba(255,255,255,0.06);
+
+  color: var(--text);
+
+  border-color: rgba(255,255,255,0.14);
+}
+
+.btn-ghost:hover {
+
+  background: rgba(255,255,255,0.12);
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.input {
+
+  width: 100%;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255,255,255,0.14);
+
+  background: rgba(0,0,0,0.25);
+
+  padding: 12px 14px;
+
+  color: var(--text);
+
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--muted-2);
+}
+
+.input:focus {
+
+  border-color: var(--accent);
+
+  box-shadow: 0 0 0 4px rgba(216,195,165,0.12);
+}
+
+/* =========================================
+   PILLS / TAGS
+========================================= */
+
+.pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  border-radius: 999px;
+
+  padding: 6px 12px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: rgba(255,255,255,0.06);
+
+  color: var(--muted);
+
+  font-size: 13px;
+}
+
+/* =========================================
+   LINKS
+========================================= */
+
+a {
+
+  text-underline-offset: 4px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+.fade-in {
+
+  animation: fadeInUp 520ms ease both;
+}
+
+@keyframes fadeInUp {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   IMAGE QUALITY
+========================================= */
+
+img {
+  image-rendering: auto;
+}
