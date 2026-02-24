@@ -1,7 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+:root {
+  --bg: #0b0b0c;
+  --gold: #c9a86a;
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.68);
+}
+
+html, body { height: 100%; }
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(201,168,106,0.18), transparent 55%),
+    radial-gradient(900px 450px at 90% 10%, rgba(255,255,255,0.08), transparent 60%),
+    var(--bg);
+  color: var(--text);
+}
+
+.gold { color: var(--gold); }
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0px); }
+
+.btn-gold {
+  background: var(--gold);
+  color: #121214;
+  border-color: rgba(201,168,106,0.55);
+}
+.btn-ghost {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+}
+
+.input {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.25);
+  padding: 12px 14px;
+  color: rgba(255,255,255,0.92);
+  outline: none;
+}
+.input:focus {
+  border-color: rgba(201,168,106,0.55);
+  box-shadow: 0 0 0 4px rgba(201,168,106,0.12);
 }
